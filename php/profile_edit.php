@@ -1,9 +1,9 @@
+#the email is passed as a parameter in the POST request
 <?php
 require_once "../_config/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    session_start();
-    $email = $_SESSION['gmail'];
+    $email = $_POST['gmail'];
     $name = $_POST['name'];
     $age = $_POST['age'];
     $dob = $_POST['dob'];
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Execute the statement
     if ($statement->execute()) {
-        $response = array ('message' => 'Profile updated successfully.');
+        $response = array('message' => 'Profile updated successfully.');
     } else {
         $response = array('message' => 'Error updating profile: ' . $statement->error);
     }

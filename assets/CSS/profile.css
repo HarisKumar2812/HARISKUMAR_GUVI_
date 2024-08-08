@@ -2,7 +2,7 @@
 $primary-color: #71b7e6;
 $secondary-color: #9b59b6;
 $text-color: #660906;
-$shadow-color: rgb(8 7 7);
+$shadow-color: rgb(8, 7, 7);
 
 // Mixins
 @mixin media-query($breakpoint) {
@@ -25,11 +25,10 @@ body {
   height: 100vh;
   margin: 0;
   padding: 20px;
-  box-sizing: border-box;
 }
 
 .container {
-  width: 40% !important;
+  width: 40%;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -66,20 +65,16 @@ table {
   font-size: 130%;
   font-weight: bold;
   margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 label {
-  text-align: left;
   display: block;
   max-width: 160px;
   font-size: 18px;
   font-weight: bold;
   color: black;
-  text-shadow: 2px 2px 4px rgba(1, 1, 1, .6);
-  text-align: left;
-  padding-right: 5px;
+  text-shadow: 2px 2px 4px rgba(1, 1, 1, 0.6);
   margin-bottom: 0;
 }
 
@@ -99,7 +94,6 @@ span {
   color: $text-color;
   font-size: 25px;
   font-weight: bold;
-  white-space: nowrap;
 }
 
 .header h2 {
@@ -112,30 +106,7 @@ span {
 
 button {
   width: 30%;
-  margin: 5% auto;
+  margin: 5% auto 0;
   color: black;
   font-size: 15px;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  padding: 6px 20px;
-  opacity: 1;
-  background: linear-gradient(135deg, $primary-color, $secondary-color);
-  border-radius: 14px;
-  text-shadow: 2px 2px 3px rgba(15, 6, 6, 0.86);
-  box-shadow: 3px 3px 5px rgb(94, 20, 20);
-  margin-left: 9%;
-  margin-top: 3%;
-
-  &:focus {
-    outline: none;
-  }
-
-  + button {
-    margin-left: 5%;
-  }
-}
-
-p {
-  color: #dd2222;
-}
+  font-weight: bold

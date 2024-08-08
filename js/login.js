@@ -1,9 +1,6 @@
-#sudo apt-get install redis-server
-#sudo pecl install redis
-#extension=redis.so
 <?php
 session_start();
-require 'vendor/autoload.php'; // Make sure to use Composer for Redis client
+require 'vendor/autoload.php'; // Ensure you have installed Predis via Composer
 
 use Predis\Client as PredisClient;
 
@@ -14,11 +11,11 @@ $redis = new PredisClient();
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Sample user validation (you should replace this with actual user validation logic)
+// Sample user validation (replace with actual validation logic)
 if ($username === 'user' && $password === 'password') {
     // Generate a session ID and store it in Redis
     $sessionId = bin2hex(random_bytes(16));
-    $redis->set("session:$sessionId", $username, 'EX', 3600); // 1 hour expiry
+    $redis->set("session:$sessionId", $username, 'EX', 3600); // 1-hour expiry
 
     // Return a JSON response
     echo json_encode([
@@ -33,7 +30,7 @@ if ($username === 'user' && $password === 'password') {
     ]);
 }
 ?>
-#composer require predis/predis
+#javascript
 $(document).ready(function() {
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();

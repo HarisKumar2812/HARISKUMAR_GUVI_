@@ -1,8 +1,3 @@
-#packages
-mkdir myapp
-cd myapp
-npm init -y
-npm install express redis body-parser
 const express = require('express');
 const redis = require('redis');
 const bodyParser = require('body-parser');
@@ -15,8 +10,8 @@ const port = 3000;
 const client = redis.createClient();
 
 // Middleware
-app.use(bodyParser.json()); // For parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route to handle form submissions
 app.post('/submit', (req, res) => {
@@ -50,26 +45,17 @@ app.post('/submit', (req, res) => {
 
     // Save data to Redis
     client.hmset(`user:profile:${name}`, {
-        age: age,
-        dob: dob,
-        contact: contact,
-        address: address
-    }, (err, reply) => {
+        age,
+        dob,
+        contact,
+        address
+    }, (err) => {
         if (err) {
             return res.json({ status: 'error', message: 'Error saving data to Redis' });
         }
         res.json({ status: 'success', message: 'Profile updated successfully' });
     });
 });
-#output
-curl -X POST http://localhost:3000/submit -H "Content-Type: application/json" -d '{
-    "name": "JohnDoe",
-    "age": "25",
-    "dob": "1999-01-01",
-    "contact": "9876543210",
-    "address": "123 Main St, Anytown, USA"
-}'
-    
 
 // Start the server
 app.listen(port, () => {
